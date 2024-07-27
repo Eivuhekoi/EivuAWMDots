@@ -1,0 +1,3 @@
+[submodule "awesome/batter-widget"]
+	path = awesome/batter-widget
+	url = https://github.com/deficient/battery-widget.git
