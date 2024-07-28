@@ -46,7 +46,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("/home/eivu/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -257,6 +257,7 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,		  },  "d", function() awful.util.spawn("rofi -show drun") end),
+    awful.key({ modkey, "Shift"   }, "s", function() awful.util.spawn("maim -s | xclip -selection clipboard -t image/png") end),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
