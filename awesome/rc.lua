@@ -257,7 +257,16 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,		  },  "d", function() awful.util.spawn("rofi -show drun") end),
-    awful.key({ modkey, "Shift"   }, "s", function() awful.util.spawn("maim -s | xclip -selection clipboard -t image/png") end),
+    awful.key({ modkey, "Shift"}, "s",
+	function()
+		awful.spawn.with_shell('maim -s | xclip -sel clip -t image/png')
+		naughty.notify ({
+			title = 'Screenshot taken!',
+			text = 'Saved to clipboard?'
+		})
+	end,
+	{ description = 'Takes a screenshot', group = 'awesome'}
+    ),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
